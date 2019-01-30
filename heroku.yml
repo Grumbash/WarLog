@@ -1,0 +1,5 @@
+build:
+  languages:
+    - node
+run:
+  worker: node index.js

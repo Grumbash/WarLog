@@ -8,6 +8,10 @@
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
+  "engines": {
+    "npm": "6.7.0",
+    "node": "11.5.0"
+  },
   "author": "Gleb Rosev",
   "license": "ISC",
   "dependencies": {

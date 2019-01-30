@@ -4,7 +4,6 @@ const Telegram = require("telegraf/telegram");
 const roll1d100 = require("./roll");
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
-const telegram = new Telegram(process.env.BOT_TOKEN);
 
 bot.start(ctx => ctx.reply("Чего ты желаешь, сментрый?"));
 
@@ -69,6 +68,13 @@ bot.hears("пидора ответ", ctx =>
   ctx.reply(
     "Считаешь это смешным? Посмотрим как ты посмеешься когда твое очко будет шире очка ужаса..."
   )
+);
+bot.hears(
+  "Хочу павер" ||
+    "хочу павер" ||
+    "хочу быть демонпринцем" ||
+    "Хочу быть демонпринцем",
+  ctx => ctx.reply("Вжух и ты демонпринц")
 );
 
 bot.on("message", ctx => {
