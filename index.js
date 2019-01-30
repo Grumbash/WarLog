@@ -2,6 +2,7 @@ require("dotenv").config();
 const Telegraf = require("telegraf");
 const Telegram = require("telegraf/telegram");
 const roll1d100 = require("./roll");
+const http = require("http");
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
@@ -83,3 +84,4 @@ bot.on("message", ctx => {
   );
 });
 bot.launch();
+http.createServer(onRequest).listen(process.env.PORT || 6000);
