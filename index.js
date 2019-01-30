@@ -84,4 +84,4 @@ bot.on("message", ctx => {
   );
 });
 bot.launch();
-http.createServer(onRequest).listen(process.env.PORT || 6000);
+http.createServer(bot).listen(process.env.PORT || 6000);
