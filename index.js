@@ -34,8 +34,10 @@ bot.command("roll1d100", ctx => {
     ctx.reply(
       `Ничтожная пешка (${result}%), наслаждайся мнимой свободой, пока...`
     );
-  } else if (result > 40 && result <= 50) {
+  } else if (result > 40 && result < 50) {
     ctx.reply(`Бесполезно убегать, (${result}%) ты не сможешь бегать вечно`);
+  } else if (result === 50) {
+    ctx.reply(`На полпути(${result}%), в могилу...`);
   } else if (result > 50 && result <= 60) {
     ctx.reply(
       `Ты меня разочаровал(${result}%), я думал ты хоть на что-то способен.`
