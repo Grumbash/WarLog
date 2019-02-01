@@ -4,7 +4,7 @@ function getRandomInt(max, min = 1) {
 }
 
 exports.roll1d100 = () => {
-  return Math.round(Math.random() * 100);
+  return Math.floor(Math.random() * 101);
 };
 
 exports.roll = (count, dice) => {

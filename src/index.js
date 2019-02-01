@@ -4,6 +4,7 @@ const http = require("http");
 const cadia = require("./commands/cadia");
 const roll = require("./commands/roll");
 const roll1d100 = require("./commands/roll1d100");
+const resp = require("./response");
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
@@ -30,7 +31,12 @@ bot.on("message", ctx => {
   );
 });
 bot.launch();
-http.createServer(bot).listen(process.env.PORT || 6000);
+http.createServer(resp).listen(process.env.PORT || 3000, err => {
+  if (err) {
+    return console.error(err);
+  }
+  console.log(`server is listening on ${process.env.PORT}`);
+});
 setInterval(function() {
   http.get("http://warhammer-log-bot.herokuapp.com");
 }, 300000);
