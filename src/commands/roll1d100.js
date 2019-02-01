@@ -1,22 +1,6 @@
-require("dotenv").config();
-const Telegraf = require("telegraf");
-const Telegram = require("telegraf/telegram");
-const roll1d100 = require("./roll");
-const http = require("http");
+const { roll1d100 } = require("../roll");
 
-const bot = new Telegraf(process.env.BOT_TOKEN);
-
-bot.start(ctx => ctx.reply("Чего ты желаешь, сментрый?"));
-
-bot.help(ctx => {
-  ctx.reply("Я Абаддон Разоритель. Чего ты хочешь жалкий смертный? ");
-});
-
-bot.command("cadia", ctx => {
-  ctx.reply("Кадия пала, как и падет Империум!");
-});
-
-bot.command("roll1d100", ctx => {
+const roll1d100f = ctx => {
   try {
     const result = roll1d100();
     if (result > 0 && result <= 10) {
@@ -63,25 +47,6 @@ bot.command("roll1d100", ctx => {
   } catch (error) {
     console.error(error);
   }
-});
+};
 
-bot.hears("пидора ответ", ctx =>
-  ctx.reply(
-    "Считаешь это смешным? Посмотрим как ты посмеешься когда твое очко будет шире очка ужаса..."
-  )
-);
-bot.hears(
-  "Хочу павер" ||
-    "хочу павер" ||
-    "хочу быть демонпринцем" ||
-    "Хочу быть демонпринцем",
-  ctx => ctx.reply("Вжух и ты демонпринц")
-);
-
-bot.on("message", ctx => {
-  return ctx.reply(
-    "Я - Архидьявол, Разоритель Миров, и лже - Император падет от моей руки!"
-  );
-});
-bot.launch();
-http.createServer(bot).listen(process.env.PORT || 6000);
+module.exports = roll1d100f;
