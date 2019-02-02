@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "A telegram bot that helps to you to log your role-play adventures ",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Grumbash/WarLog.git"
+  },
   "scripts": {
     "test": "mocha",
     "start": "node src/index.js",
@@ -14,6 +18,10 @@
   },
   "author": "Gleb Rosev",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Grumbash/WarLog.git/issues"
+  },
+  "homepage": "https://github.com/Grumbash/WarLog",
   "dependencies": {
     "dotenv": "^6.2.0",
     "roll": "^1.2.0",
