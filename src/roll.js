@@ -1,16 +1,36 @@
-function getRandomInt(max, min = 1) {
-  const result = Math.floor(Math.random() * (max + 1 - min)) + min;
-  return result;
-}
+const Roll = require("roll");
+const rollDice = new Roll();
+
+exports.roll1d4 = () => {
+  return rollDice.roll("d4").result;
+};
+
+exports.roll1d6 = () => {
+  return rollDice.roll("d6").result;
+};
+
+exports.roll1d8 = () => {
+  return rollDice.roll("d8").result;
+};
+
+exports.roll1d10 = () => {
+  return rollDice.roll("d10").result;
+};
+
+exports.roll1d12 = () => {
+  return rollDice.roll("d12").result;
+};
+
+exports.roll1d20 = () => {
+  return rollDice.roll("d20").result;
+};
+
+exports.roll1d66 = () => {
+  return rollDice.roll("2d6").rolled.toString();
+};
 
 exports.roll1d100 = () => {
-  return Math.floor(Math.random() * 101);
+  return rollDice.roll("d%").result;
 };
 
-exports.roll = (count, dice) => {
-  const arr = [];
-  for (let index = 0; index < count; index++) {
-    arr.push(getRandomInt(+dice));
-  }
-  return arr;
-};
+exports.roll = rollDice;

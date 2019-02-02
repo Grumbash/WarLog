@@ -50,3 +50,13 @@ const roll1d100f = ctx => {
 };
 
 module.exports = roll1d100f;
+const roll1d100Command = ctx => {
+  const result = roll1d100();
+  switch (key) {
+    case value:
+      break;
+
+    default:
+      break;
+  }
+};

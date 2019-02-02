@@ -1,19 +1,26 @@
 const { roll } = require("../roll");
 
 const rollCommand = ctx => {
-  return ctx.reply("Ответочка из roll");
-  const diceRoll = ctx.message.text.trim();
-  const arrOfDices = diceRoll.split(" ")[1].split("d");
-  const justRoll = 0;
-  if (arrOfDices) {
-    const dices = arrOfDices.split(" ")[1].split("d");
-    const rollResult = roll(dices[0], dices[1]);
-    return ctx.reply(rollResult);
+  try {
+    const diceRoll = ctx.message.text.trim();
+    const rollRequest = diceRoll.split(" ")[1];
+    if (roll.validate(rollRequest)) {
+      return ctx.reply(
+        `Твои кости показывают: ${roll.roll(rollRequest).result}`
+      );
+    }
+
+    ctx.reply("Твой интеллект не позволяет тебе написать просьбу правильно?");
+
+    ctx.reply(
+      `Пиши в формате — /roll "число кубов"d"число граней" (/roll 1d100, например), а не ${
+        ctx.message.text
+      }`
+    );
+  } catch (error) {
+    console.error(error);
+    return new Error(error);
   }
-  ctx.reply("Ты даже нормально рольнуть не можешь?");
-  return ctx.reply(
-    `Пиши просьбу в формате "/roll 1d100", а не ${ctx.message.text}`
-  );
 };
 
 module.exports = rollCommand;
