@@ -25,9 +25,11 @@ exports.roll1d20 = () => {
   return rollDice.roll("d20").result;
 };
 
-exports.roll1d66 = () => {
-  return rollDice.roll("2d6").rolled.toString();
-};
+exports.roll1d66 = () =>
+  +rollDice
+    .roll("2d6")
+    .rolled.map(e => e.toString())
+    .reduce((accum, curVal) => accum + curVal);
 
 exports.roll1d100 = () => {
   return rollDice.roll("d%").result;
