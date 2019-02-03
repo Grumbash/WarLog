@@ -18,7 +18,7 @@ const resp = require("./response");
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
-bot.start(ctx => ctx.reply("Чего ты желаешь, сментрый?"));
+bot.start(ctx => ctx.reply("Чего ты желаешь, смертный?"));
 
 bot.help(ctx => {
   ctx.reply("Я Абаддон Разоритель. Чего ты хочешь жалкий смертный? ");
@@ -36,7 +36,7 @@ bot.command("roll1d6", ctx => {
 });
 bot.command("roll1d8", ctx => {
   const result = roll1d8();
-  ctx.reply(`Люблю это восьмерки, а ты получаешь: ${result}`);
+  ctx.reply(`Люблю эти восьмерки, а ты получаешь: ${result}`);
 });
 bot.command("roll1d10", ctx => {
   const result = roll1d10();
