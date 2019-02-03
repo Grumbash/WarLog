@@ -5,9 +5,12 @@ const rollCommand = ctx => {
     const diceRoll = ctx.message.text.trim();
     const rollRequest = diceRoll.split(" ")[1];
     if (roll.validate(rollRequest)) {
-      return ctx.reply(
-        `Твои кости показывают: ${roll.roll(rollRequest).result}`
-      );
+      const result = roll.roll(rollRequest);
+      return ctx.reply(`Твои кости показывают: ${result.rolled
+        .map(elem => "(" + elem + ")")
+        .toString()
+        .replace(/,/g, " ")}.\nВ итоге: ${result.result}
+        `);
     }
 
     ctx.reply("Твой интеллект не позволяет тебе написать просьбу правильно?");
