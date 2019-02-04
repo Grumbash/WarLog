@@ -63,11 +63,6 @@ bot.hears("пидора ответ", ctx =>
 );
 bot.hears("Хочу павер", ctx => ctx.reply("Вжух и ты демонпринц"));
 
-bot.on("message", ctx => {
-  return ctx.reply(
-    "Я - Архидьявол, Разоритель Миров, и лже - Император падет от моей руки!"
-  );
-});
 bot.launch();
 http.createServer(resp).listen(process.env.PORT || 3000, err => {
   if (err) {
