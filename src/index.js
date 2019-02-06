@@ -1,6 +1,7 @@
 require("dotenv").config();
 const Telegraf = require("telegraf");
 const http = require("http");
+const mongoose = require("mongoose");
 
 const cadia = require("./controllers/cadia");
 const roll = require("./controllers/rolls/roll");
@@ -19,6 +20,14 @@ const resp = require("./response");
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
 bot.start(ctx => ctx.reply("Чего ты желаешь, смертный?"));
+
+mongoose
+  .connect(
+    process.env.DB_URL,
+    { useNewUrlParser: true }
+  )
+  .then(() => console.log("MongoDB Connected"))
+  .catch(err => console.log(err));
 
 bot.help(ctx => {
   ctx.reply("Я Абаддон Разоритель. Чего ты хочешь жалкий смертный? ");
