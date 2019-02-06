@@ -24,6 +24,7 @@
   "homepage": "https://github.com/Grumbash/WarLog",
   "dependencies": {
     "dotenv": "^6.2.0",
+    "mongoose": "^5.4.10",
     "roll": "^1.2.0",
     "telegraf": "^3.26.0"
   },

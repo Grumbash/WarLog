@@ -1,4 +1,4 @@
-const { roll } = require("../roll");
+const { roll } = require("./rollClassic");
 
 const rollCommand = ctx => {
   try {
