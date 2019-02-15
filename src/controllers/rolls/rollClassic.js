@@ -1,5 +1,6 @@
 const Roll = require("roll");
 const rollDice = new Roll();
+const CriticalEffects = require("../../models/criticalEffect");
 
 exports.roll1d4 = ctx => {
   const result = rollDice.roll("d4").result;
@@ -117,12 +118,20 @@ exports.roll1d20 = ctx => {
   }
 };
 
-exports.roll1d66 = ctx => {
+exports.roll1d66 = async ctx => {
   const result = +rollDice
     .roll("2d6")
     .rolled.map(e => e.toString())
     .reduce((accum, curVal) => accum + curVal);
-  return ctx.reply(`Ты страдаешь от: ${result}`);
+  const crit = await CriticalEffects.findOne({ roll: result });
+  console.log(crit);
+  const awnser = `На кубах: ${result}\n\nНазвание: ${crit.name}\nОписание: ${
+    crit.desc
+  }\n\nЭффект: ${crit.effect}\n\nУсиление: ${crit.severity}\nКлючевые слова: ${
+    crit.keywords
+  }
+  `;
+  ctx.reply(awnser);
 };
 
 exports.roll1d100 = ctx => {

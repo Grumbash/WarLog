@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const CriticalEffectSchema = new Schema({
+const CriticalEffectsSchema = new Schema({
   roll: [Number],
   name: String,
   desc: String,
@@ -10,8 +10,8 @@ const CriticalEffectSchema = new Schema({
   keywords: [String]
 });
 
-module.exports = CriticalEffect = mongoose.model(
+module.exports = CriticalEffects = mongoose.model(
   "criticalEffects",
-  CriticalEffectSchema,
+  CriticalEffectsSchema,
   "criticalEffects"
 );
