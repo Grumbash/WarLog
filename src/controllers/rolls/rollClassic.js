@@ -27,7 +27,7 @@ exports.roll1d4 = ctx => {
 };
 
 exports.roll1d6 = ctx => {
-  const result = rollDice.roll("d8").result;
+  const result = rollDice.roll("d6").result;
   return ctx.reply(`Твой результат: ${result}`);
 };
 
