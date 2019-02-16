@@ -8,6 +8,7 @@ describe("roll tests", () => {
   });
   it("must return a number between 1 to 100", () => {
     expect(roll1d100()).to.be.within(1, 100);
+
     expect(roll1d100()).to.be.not.within(101, 1000);
   });
 });
