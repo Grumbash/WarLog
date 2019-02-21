@@ -2,7 +2,6 @@ require("dotenv").config();
 const Telegraf = require("telegraf");
 const http = require("http");
 const mongoose = require("mongoose");
-const CronJob = require("cron").CronJob;
 
 const cadia = require("./controllers/cadia");
 const roll = require("./controllers/rolls/roll");
