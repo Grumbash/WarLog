@@ -4,7 +4,6 @@ const http = require("http");
 const mongoose = require("mongoose");
 
 const cadia = require("./controllers/cadia");
-const sendTo = require("./controllers/sendTo");
 const roll = require("./controllers/rolls/roll");
 const {
   roll1d4,
@@ -41,27 +40,25 @@ bot.command("roll1d12", roll1d12);
 bot.command("roll1d20", roll1d20);
 bot.command("roll1d66", roll1d66);
 bot.command("roll1d100", roll1d100);
-bot.command("sendTo", sendTo);
-
-bot.hears("нет", ctx => ctx.reply("Слаанешита ответ!"));
-
-bot.hears("Нет", ctx => ctx.reply("Слаанешита ответ!"));
-
-bot.hears("Хочу павер", ctx => ctx.reply("Вжух и ты демонпринц"));
 
 bot.on("message", ctx => {
   const { first_name, last_name, username } = ctx.message.from;
   const { text, date } = ctx.message;
-  console.log({ first_name, last_name, username, text, date });
+  console.log({ first_name, last_name, username, text, date, chatId: ctx.message.chat.id });
+  if (ctx.message.chat.id === 186151380) {
+    ctx.telegram.sendMessage(process.env.GROUP_CHAT_ID, ctx.message.text);
+  }
 });
 
 bot.launch();
+
 http.createServer(resp).listen(process.env.PORT || 3000, err => {
   if (err) {
     return console.error(err);
   }
   console.log(`server is listening on ${process.env.PORT}`);
 });
+
 setInterval(function () {
   http.get("http://warhammer-log-bot.herokuapp.com");
 }, 300000);
