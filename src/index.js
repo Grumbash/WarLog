@@ -46,7 +46,12 @@ bot.on("message", ctx => {
   const { text, date } = ctx.message;
   console.log({ first_name, last_name, username, text, date, chatId: ctx.message.chat.id });
   if (ctx.message.chat.id === 186151380) {
-    ctx.telegram.sendMessage(process.env.GROUP_CHAT_ID, ctx.message.text);
+    const duobleDots = ctx.message.text.split("")[0]
+    if (duobleDots === ":") {
+      const re_text = ctx.message.text.slice(1);
+      ctx.telegram.sendMessage(process.env.GROUP_CHAT_ID, re_text);
+    };
+    // ctx.telegram.sendMessage(process.env.GROUP_CHAT_ID, ctx.message.text);
   }
 });
 
