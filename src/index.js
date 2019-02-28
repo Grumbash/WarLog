@@ -4,6 +4,7 @@ const http = require("http");
 const mongoose = require("mongoose");
 
 const cadia = require("./controllers/cadia");
+const sendTo = require("./controllers/sendTo");
 const roll = require("./controllers/rolls/roll");
 const {
   roll1d4,
@@ -40,6 +41,7 @@ bot.command("roll1d12", roll1d12);
 bot.command("roll1d20", roll1d20);
 bot.command("roll1d66", roll1d66);
 bot.command("roll1d100", roll1d100);
+bot.command("sendTo", sendTo);
 
 bot.hears("нет", ctx => ctx.reply("Слаанешита ответ!"));
 
@@ -60,6 +62,6 @@ http.createServer(resp).listen(process.env.PORT || 3000, err => {
   }
   console.log(`server is listening on ${process.env.PORT}`);
 });
-setInterval(function() {
+setInterval(function () {
   http.get("http://warhammer-log-bot.herokuapp.com");
 }, 300000);
